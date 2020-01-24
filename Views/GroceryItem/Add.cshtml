@@ -1,0 +1,22 @@
+﻿@model GroceryTracker.ViewModels.AddGroceryItemViewModel
+
+<h1>Add Grocery Item</h1>
+
+<form asp-controller="Grocery Item" asp-action="Add" method="post">
+
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input class="form-control" asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Expiration"></label>
+        <input class="form-control" asp-for="Expiration" />
+        <span asp-validation-for="Expiration"></span>
+    </div>
+
+   
+
+    <input type="submit" value="Add Grocery Item" />
+
+</form>
