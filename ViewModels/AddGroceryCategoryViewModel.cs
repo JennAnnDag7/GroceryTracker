@@ -10,6 +10,6 @@ namespace GroceryTracker.ViewModels
     {
         [Required]
         [Display(Name = "Category Name")]
-        public string Name { get; set; }
+        public string CategoryName { get; set; }
     }
 }

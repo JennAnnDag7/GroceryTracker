@@ -7,7 +7,7 @@ namespace GroceryTracker.Models
 {
     public class GroceryCategory
     {
-        public string Name { get; set; }
+        public string CategoryName { get; set; }
         public int ID { get; set; }
 
         public IList<GroceryItem> GroceryItems { get; set; }

@@ -19,30 +19,27 @@ namespace GroceryTracker.ViewModels
 
         [Required]
         [Display(Name = "Category")]
-        public int CategoryID { get; set; }
+        public string CategoryName { get; set; }
 
         public List<SelectListItem> Categories { get; set; }
 
-        public AddGroceryItemViewModel()
-        {
-        }
-
+        
         public AddGroceryItemViewModel(List<GroceryCategory> categories)
         {
-            //this.Categories = categories;
-            //CheeseTypes = new List<SelectListItem>();
-            // <option value="0">Hard</option>
-
-            Categories = new List<SelectListItem>();
+           Categories = new List<SelectListItem>();
 
             foreach (GroceryCategory category in categories)
             {
                 Categories.Add(new SelectListItem()
                 {
                     Value = category.ID.ToString(),
-                    Text = category.Name
+                    Text = category.CategoryName
                 });
             }
+        }
+
+        public AddGroceryItemViewModel()
+        {
         }
     }
 }
