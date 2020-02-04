@@ -14,28 +14,29 @@ namespace GroceryTracker.ViewModels
         [Display(Name = "Grocery Item Name")]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "You must enter an expiration date")]
-        public string Expiration { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime Expiration { get; set; }
 
         [Required]
         [Display(Name = "Category")]
         public string CategoryName { get; set; }
 
-        public List<SelectListItem> Categories { get; set; }
+        public List<SelectListItem> GroceryCategories { get; set; }
 
         
-        public AddGroceryItemViewModel(List<GroceryCategory> categories)
+        public AddGroceryItemViewModel(IEnumerable<GroceryCategory> categories)
         {
-           Categories = new List<SelectListItem>();
+           GroceryCategories = new List<SelectListItem>();
 
-            foreach (GroceryCategory category in categories)
+            foreach (var category in categories)
             {
-                Categories.Add(new SelectListItem()
+                GroceryCategories.Add(new SelectListItem()
                 {
                     Value = category.ID.ToString(),
                     Text = category.CategoryName
                 });
             }
+            this.GroceryCategories = GroceryCategories;
         }
 
         public AddGroceryItemViewModel()

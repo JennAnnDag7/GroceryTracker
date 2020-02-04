@@ -1,0 +1,18 @@
+﻿@model List<GroceryTracker.Models.GroceryCategory>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Grocery Categories</h2>
+<ul>
+
+    @foreach (var category in Model)
+    {
+        <li>@category.CategoryName</li>
+    }
+
+
+
+
+</ul>
+<p><a asp-controller="Grocery Category" asp-action="Add">Add Category</a></p>

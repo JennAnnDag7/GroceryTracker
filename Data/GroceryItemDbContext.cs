@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace GroceryTracker.Data
 {
-    public class GroceryItemDbContext : DbContext
+    public class GroceryTrackerDbContext : DbContext
     {
         public DbSet<GroceryItem> GroceryItems { get; set; }
         public DbSet<GroceryCategory> Categories { get; set; }
-        public GroceryItemDbContext(DbContextOptions<GroceryItemDbContext> options)
-            : base(options)
-        { }
+        public GroceryTrackerDbContext(DbContextOptions<GroceryTrackerDbContext> options) : base(options)
+        {
+        }
     }
 
     

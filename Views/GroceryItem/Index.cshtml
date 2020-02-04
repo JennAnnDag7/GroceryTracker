@@ -6,4 +6,22 @@
 {
     <p>No grocery items yet!</p>
 }
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Expiration</th>
+        <th>CategoryName</th>
+
+    </tr>
+    @foreach (var groceryItem in Model)
+    {
+        <tr>
+            <th>@groceryItem.Name</th>
+            <th>@groceryItem.Expiration</th>
+            <th>@groceryItem.GroceryCategory.CategoryName</th>
+
+        </tr>
+    }
+</table>
+<p><a asp-controller="Grocery Item" asp-action="Add">Add Grocery Item</a>&nbsp;&nbsp;<a asp-controller="Grocery Item" asp-action="Remove">Remove Grocery Item</a></p>
 

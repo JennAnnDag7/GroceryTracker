@@ -11,5 +11,6 @@ namespace GroceryTracker.Models
         public int ID { get; set; }
 
         public IList<GroceryItem> GroceryItems { get; set; }
+        
     }
 }

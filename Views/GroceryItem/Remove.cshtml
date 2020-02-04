@@ -2,9 +2,9 @@
 
 <form method="post">
 
-    @foreach (var GroceryItem in ViewBag.cheeses)
+    @foreach (var GroceryItem in ViewBag.groceryitems)
     {
-        <input type="checkbox" name="cheeseIds" id="@GroceryItem.ID" value="@GroceryItem.ID" />
+        <input type="checkbox" name="GroceryIds" id="@GroceryItem.ID" value="@GroceryItem.ID" />
         <label for="@GroceryItem.ID">@GroceryItem.Name</label>
         <br />
     }

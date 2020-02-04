@@ -6,38 +6,42 @@ using GroceryTracker.Data;
 using GroceryTracker.Models;
 using GroceryTracker.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace GroceryTracker.Controllers
 {
     public class GroceryItemController : Controller
     {
-        private readonly GroceryItemDbContext context;
+        private readonly GroceryTrackerDbContext context;
 
-        public GroceryItemController(GroceryItemDbContext dbContext)
+        public GroceryItemController(GroceryTrackerDbContext dbContext)
         {
-            this.context = dbContext;
+            context = dbContext;
         }
 
         public IActionResult Index()
         {
-            List<GroceryItem> groceryitems;
-            groceryitems = context.GroceryItems.ToList();
+            IList<GroceryItem> groceryitems = context.GroceryItems.ToList();
+            
             return View(groceryitems);
         }
         public IActionResult Add()
         {
-            AddGroceryItemViewModel addGroceryItemViewModel = new AddGroceryItemViewModel();
+            AddGroceryItemViewModel addGroceryItemViewModel = new AddGroceryItemViewModel(context.Categories.ToList());
             return View(addGroceryItemViewModel);
         }
         [HttpPost]
-        public IActionResult Add(AddGroceryItemViewModel addGroceryItemViewModel)
+        public IActionResult Add(AddGroceryItemViewModel model)
         {
             if (ModelState.IsValid)
             {
+                GroceryCategory newGroceryCategory = 
+                    context.Categories.Single(c => c.CategoryName == model.CategoryName);
                 
                 GroceryItem newGroceryItem = new GroceryItem
                 {
-                    Name = addGroceryItemViewModel.Name,
+                    Name = model.Name,
+                    GroceryCategory = newGroceryCategory
                 };
 
                 context.GroceryItems.Add(newGroceryItem);
@@ -46,7 +50,7 @@ namespace GroceryTracker.Controllers
                 return Redirect("/GroceryItem");
             }
 
-            return View(addGroceryItemViewModel);
+            return View(model);
         }
     }
 }
