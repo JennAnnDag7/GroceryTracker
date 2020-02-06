@@ -11,8 +11,9 @@ namespace GroceryTracker.Models
         public string Name { get; set; }
         public DateTime Expiration { get; set; }
         
-        public GroceryCategory GroceryCategory { get; set; }
+        public GroceryCategory Category { get; set; }
+        public int CategoryID { get; set; }
 
-        
+
     }
 }

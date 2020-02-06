@@ -41,7 +41,7 @@ namespace GroceryTracker.Controllers
                 GroceryItem newGroceryItem = new GroceryItem
                 {
                     Name = model.Name,
-                    GroceryCategory = newGroceryCategory
+                    
                 };
 
                 context.GroceryItems.Add(newGroceryItem);
